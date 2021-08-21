@@ -1,12 +1,23 @@
+import { Grid } from "@material-ui/core";
 import LoadRoute from "../components/LoadRoute";
+import NavBar from "../components/Navbar/Navbar";
+import Sidebar from "../components/Sidebar/Sidebar";
+import { useStyles } from "./styles";
 
 const DefaultLayout = ({ routes }) => {
+  const classes = useStyles();
+
   return (
-    <div>
-      <header>Navbar</header>
-      <div>
-        <LoadRoute routes={routes} />
-      </div>
+    <div className={classes.root}>
+      <NavBar />
+      <Grid container className={classes.container}>
+        <Grid item sm={2}>
+          <Sidebar />
+        </Grid>
+        <Grid item sm={10} className={classes.content}>
+          <LoadRoute routes={routes} />
+        </Grid>
+      </Grid>
     </div>
   );
 };
