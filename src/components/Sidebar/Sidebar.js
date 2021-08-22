@@ -1,6 +1,12 @@
 import React from "react";
 import { Container, List, ListItemIcon, ListItemText } from "@material-ui/core";
-import { Home, Category, Class, Person } from "@material-ui/icons";
+import {
+  Home,
+  Category,
+  Class,
+  Person,
+  Announcement,
+} from "@material-ui/icons";
 import { Link, useLocation } from "react-router-dom";
 import useStyles, { ListItem } from "./style";
 
@@ -23,6 +29,11 @@ const Sidebar = () => {
       icon: <Class />,
       text: "Lessons",
       path: "/lessons",
+    },
+    {
+      icon: <Announcement />,
+      text: "Ads",
+      path: "/ads",
     },
     {
       icon: <Person />,
