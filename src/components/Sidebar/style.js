@@ -39,14 +39,6 @@ const useStyles = makeStyles((theme) => ({
 
 export const ListItem = withStyles({
   root: {
-    "&$selected": {
-      backgroundColor: "none",
-      color: "white",
-    },
-    "&$selected:hover": {
-      backgroundColor: "none",
-      color: "white",
-    },
     "&:hover": {
       backgroundColor: "#009688",
       color: "white",

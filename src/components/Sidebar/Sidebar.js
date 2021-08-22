@@ -35,11 +35,11 @@ const Sidebar = () => {
     <Container className={classes.root}>
       <List>
         {items.map((item) => (
-          <Link to={item.path} className={classes.link}>
+          <Link key={item.text} to={item.path} className={classes.link}>
             <ListItem
               button
               className={
-                pathname == item.path ? classes.active : classes.link__item
+                pathname === item.path ? classes.active : classes.link__item
               }
             >
               <ListItemIcon className={classes.link__icon}>
