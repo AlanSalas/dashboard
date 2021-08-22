@@ -11,10 +11,10 @@ const DefaultLayout = ({ routes }) => {
     <div className={classes.root}>
       <NavBar />
       <Grid container className={classes.container}>
-        <Grid item sm={2}>
+        <Grid item xs={2} sm={2}>
           <Sidebar />
         </Grid>
-        <Grid item sm={10} className={classes.content}>
+        <Grid item xs={10} sm={10} className={classes.content}>
           <LoadRoute routes={routes} />
         </Grid>
       </Grid>
