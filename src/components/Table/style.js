@@ -1,11 +1,20 @@
 import { makeStyles, TableCell, TableRow, withStyles } from "@material-ui/core";
 import { deepPurple } from "@material-ui/core/colors";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 700,
   },
-});
+  detail: {
+    color: theme.palette.info.main,
+  },
+  edit: {
+    color: theme.palette.warning.main,
+  },
+  delete: {
+    color: theme.palette.error.main,
+  },
+}));
 
 export const StyledTableCell = withStyles((theme) => ({
   head: {
