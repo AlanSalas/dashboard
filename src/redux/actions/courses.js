@@ -1,4 +1,13 @@
-const getAll = () => async (dispatch) => {
+import { getCourses } from "../../api/courses";
+import { uiStartLoading, uiFinishLoading } from "../actions/ui";
+
+export const getAllCourses = () => async (dispatch) => {
   try {
-  } catch (error) {}
+    dispatch(uiStartLoading());
+    const { data } = await getCourses();
+    dispatch({ type: "GET_ALL", payload: data });
+    dispatch(uiFinishLoading());
+  } catch (error) {
+    console.log(error);
+  }
 };

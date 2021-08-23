@@ -1,4 +1,15 @@
-import { Container, Typography, Grid, Tooltip, Fab } from "@material-ui/core";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCourses } from "../redux/actions/courses";
+import {
+  Container,
+  Typography,
+  Grid,
+  Tooltip,
+  Fab,
+  CircularProgress,
+  Box,
+} from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import Table from "../components/Table";
 import Modal from "../components/Modal";
@@ -8,20 +19,14 @@ import useStyles from "./style";
 const Courses = ({ openModal, handleOpenModal }) => {
   const classes = useStyles();
   const tableRows = ["Name", "Actions"];
-  const data = [
-    {
-      id: "1",
-      name: "Course 1",
-    },
-    {
-      id: "2",
-      name: "Course 2",
-    },
-    {
-      id: "3",
-      name: "Course 3",
-    },
-  ];
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllCourses());
+  }, [dispatch]);
+
+  const data = useSelector((state) => state.courses);
+  const loading = useSelector((state) => state.ui.loading);
 
   return (
     <Container>
@@ -29,9 +34,17 @@ const Courses = ({ openModal, handleOpenModal }) => {
         Courses
       </Typography>
       <Grid container>
-        <Grid item xs={12} sm={12} lg={12}>
-          <Table color="#d1c4e9" tableRows={tableRows} data={data} />
-        </Grid>
+        {loading ? (
+          <Grid item xs={12} sm={12} lg={12}>
+            <Box display="flex" alignItems="center" justifyContent="center">
+              <CircularProgress color="primary" />
+            </Box>
+          </Grid>
+        ) : (
+          <Grid item xs={12} sm={12} lg={12}>
+            <Table color="#d1c4e9" tableRows={tableRows} data={data} />
+          </Grid>
+        )}
       </Grid>
       <Tooltip
         title="Add"
