@@ -1,9 +1,10 @@
 import { Container, Typography, Grid, Tooltip, Fab } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import Table from "../components/Table";
+import Modal from "../components/Modal";
 import useStyles from "./style";
 
-const Courses = () => {
+const Courses = ({ openModal, handleOpenModal }) => {
   const classes = useStyles();
   const tableRows = ["Name", "Actions"];
   const data = [
@@ -35,12 +36,15 @@ const Courses = () => {
         title="Add"
         placement="top"
         aria-label="add"
-        onClick={() => console.log("Open Modal")}
+        onClick={handleOpenModal}
       >
         <Fab className={classes.add}>
           <Add />
         </Fab>
       </Tooltip>
+      <Modal openModal={openModal} handleOpenModal={handleOpenModal}>
+        <h1>Add Courses</h1>
+      </Modal>
     </Container>
   );
 };
