@@ -1,13 +1,8 @@
-import {
-  Container,
-  Grid,
-  Modal as ModalUi,
-  Typography,
-} from "@material-ui/core";
+import { Container, Modal as ModalUi, Typography } from "@material-ui/core";
 import Fade from "@material-ui/core/Fade";
 import useStyles from "./style";
 
-const Modal = ({ openModal, handleOpenModal, children }) => {
+const Modal = ({ openModal, handleOpenModal, title, children }) => {
   const classes = useStyles();
 
   return (
@@ -19,13 +14,9 @@ const Modal = ({ openModal, handleOpenModal, children }) => {
       <Fade in={openModal}>
         <Container className={classes.content}>
           <Typography className={classes.title} variant="h6">
-            Title
+            {title}
           </Typography>
-          <Grid container>
-            <Grid item xs={12} sm={12} lg={6}>
-              {children}
-            </Grid>
-          </Grid>
+          {children}
         </Container>
       </Fade>
     </ModalUi>

@@ -2,6 +2,7 @@ import { Container, Typography, Grid, Tooltip, Fab } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import Table from "../components/Table";
 import Modal from "../components/Modal";
+import FormCourse from "../components/Forms/FormCourse";
 import useStyles from "./style";
 
 const Courses = ({ openModal, handleOpenModal }) => {
@@ -42,8 +43,12 @@ const Courses = ({ openModal, handleOpenModal }) => {
           <Add />
         </Fab>
       </Tooltip>
-      <Modal openModal={openModal} handleOpenModal={handleOpenModal}>
-        <h1>Add Courses</h1>
+      <Modal
+        openModal={openModal}
+        handleOpenModal={handleOpenModal}
+        title="Add new Course"
+      >
+        <FormCourse />
       </Modal>
     </Container>
   );

@@ -2,6 +2,7 @@ import { Container, Typography, Grid, Tooltip, Fab } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import Table from "../components/Table";
 import Modal from "../components/Modal";
+import FormAd from "../components/Forms/FormAd";
 import useStyles from "./style";
 
 const Ads = ({ openModal, handleOpenModal }) => {
@@ -45,8 +46,12 @@ const Ads = ({ openModal, handleOpenModal }) => {
           <Add />
         </Fab>
       </Tooltip>
-      <Modal openModal={openModal} handleOpenModal={handleOpenModal}>
-        <h1>Add Ads</h1>
+      <Modal
+        openModal={openModal}
+        handleOpenModal={handleOpenModal}
+        title="Add new Ad"
+      >
+        <FormAd />
       </Modal>
     </Container>
   );
