@@ -1,0 +1,52 @@
+{
+  "courses": [
+    {
+      "id": "123abc",
+      "name": "Course One"
+    },
+    {
+      "id": "abc123",
+      "name": "Course Two"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "lesson123",
+      "name": "Lesson One",
+      "courseId": "123abc"
+    },
+    {
+      "id": "lesson456",
+      "name": "Lesson Two",
+      "courseId": "123abc"
+    }
+  ],
+  "ads": [
+    {
+      "id": "ad123",
+      "description": "This is the ad one",
+      "lessonId": "lesson123"
+    },
+    {
+      "id": "ad456",
+      "description": "This is the ad two",
+      "lessonId": "lesson123"
+    }
+  ],
+  "students": [
+    {
+      "id": "student123",
+      "name": "Alan",
+      "lastName": "Salas",
+      "age": 23,
+      "lessons": ["lesson123", "lesson456"]
+    },
+    {
+      "id": "student456",
+      "name": "Erick",
+      "lastName": "UI",
+      "age": 27,
+      "lessons": ["lesson123", "lesson456"]
+    }
+  ]
+}
