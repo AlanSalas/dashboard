@@ -1,18 +1,28 @@
+import { useDispatch } from "react-redux";
 import { Button, Grid, TextField } from "@material-ui/core";
 import { useFormik } from "formik";
 import { courseSchema } from "../../schemas";
 import useStyles from "./style";
+import { addCourse, updateCourse } from "../../redux/actions/courses";
+import { closeModal } from "../../redux/actions/ui";
 
-const FormCourses = () => {
+const FormCourses = ({ setSnackBar, course }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
-      name: "",
+      name: course ? course.name : "",
     },
     validationSchema: courseSchema,
     onSubmit: (values) => {
-      console.log(values);
+      if (course) {
+        dispatch(updateCourse(course.id, values));
+      } else {
+        dispatch(addCourse(values));
+      }
+      dispatch(closeModal());
+      setSnackBar(true);
     },
   });
 

@@ -1,52 +1,38 @@
 {
   "courses": [
     {
-      "id": "123abc",
-      "name": "Course One"
-    },
-    {
-      "id": "abc123",
-      "name": "Course Two"
+      "name": "Course React Js",
+      "id": 1
     }
   ],
-  "lessons": [
-    {
-      "id": "lesson123",
-      "name": "Lesson One",
-      "courseId": "123abc"
-    },
-    {
-      "id": "lesson456",
-      "name": "Lesson Two",
-      "courseId": "123abc"
-    }
-  ],
+  "lessons": [],
   "ads": [
     {
-      "id": "ad123",
-      "description": "This is the ad one",
-      "lessonId": "lesson123"
-    },
-    {
-      "id": "ad456",
+      "id": "2",
       "description": "This is the ad two",
-      "lessonId": "lesson123"
+      "lessonId": "1"
     }
   ],
   "students": [
     {
-      "id": "student123",
+      "id": "1",
       "name": "Alan",
       "lastName": "Salas",
       "age": 23,
-      "lessons": ["lesson123", "lesson456"]
+      "lessons": [
+        "1",
+        "2"
+      ]
     },
     {
-      "id": "student456",
+      "id": "2",
       "name": "Erick",
       "lastName": "UI",
       "age": 27,
-      "lessons": ["lesson123", "lesson456"]
+      "lessons": [
+        "2",
+        "2"
+      ]
     }
   ]
 }

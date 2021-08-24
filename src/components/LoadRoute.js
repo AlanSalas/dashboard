@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 
-const LoadRoute = ({ routes, openModal, handleOpenModal }) => {
+const LoadRoute = ({ routes }) => {
   return (
     <Switch>
       {routes.map((route, index) => (
@@ -8,12 +8,7 @@ const LoadRoute = ({ routes, openModal, handleOpenModal }) => {
           key={index}
           path={route.path}
           exact={route.exact}
-          render={() => (
-            <route.component
-              openModal={openModal}
-              handleOpenModal={handleOpenModal}
-            />
-          )}
+          render={() => <route.component />}
         />
       ))}
     </Switch>

@@ -1,5 +1,6 @@
 const initialState = {
   loading: false,
+  openModal: false,
   error: "",
 };
 
@@ -10,6 +11,12 @@ const reducers = (state = initialState, action) => {
 
     case "FINISH_LOADING":
       return { ...state, loading: action.payload };
+
+    case "OPEN_MODAL":
+      return { ...state, openModal: action.payload };
+
+    case "CLOSE_MODAL":
+      return { ...state, openModal: action.payload };
 
     default:
       return state;
