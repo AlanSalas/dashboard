@@ -53,7 +53,7 @@ const Table = ({ color, tableRows, data }) => {
                 )}
                 {row.course && (
                   <StyledTableCell component="th" scope="row">
-                    {row.course}
+                    {row.course.name}
                   </StyledTableCell>
                 )}
                 {row.description && (

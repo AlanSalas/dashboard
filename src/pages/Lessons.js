@@ -1,4 +1,13 @@
-import { Container, Typography, Grid, Tooltip, Fab } from "@material-ui/core";
+import { useSelector } from "react-redux";
+import {
+  Container,
+  Typography,
+  Grid,
+  Tooltip,
+  Fab,
+  Box,
+  CircularProgress,
+} from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import Table from "../components/Table";
 import Modal from "../components/Modal";
@@ -8,23 +17,20 @@ import useStyles from "./style";
 const Lessons = ({ openModal, handleOpenModal }) => {
   const classes = useStyles();
   const tableRows = ["Name", "Course", "Actions"];
-  const data = [
-    {
-      id: "1",
-      name: "Class 1",
-      course: "Course 2",
-    },
-    {
-      id: "2",
-      name: "Class 2",
-      course: "Course 1",
-    },
-    {
-      id: "3",
-      name: "Class 3",
-      course: "Course 3",
-    },
-  ];
+  const courses = useSelector((state) => state.courses);
+  const lessons = useSelector((state) => state.lessons);
+  const loading = useSelector((state) => state.ui.loading);
+
+  const data = lessons.map((lesson) => {
+    return {
+      id: lesson.id,
+      name: lesson.name,
+      course: courses.find((course) =>
+        course.id === lesson.courseId ? course.name : null
+      ),
+      courseId: lesson.courseId,
+    };
+  });
 
   return (
     <Container>
@@ -32,9 +38,17 @@ const Lessons = ({ openModal, handleOpenModal }) => {
         Lessons
       </Typography>
       <Grid container>
-        <Grid item xs={12} sm={12} lg={12}>
-          <Table color="#d1c4e9" tableRows={tableRows} data={data} />
-        </Grid>
+        {loading ? (
+          <Grid item xs={12} sm={12} lg={12}>
+            <Box display="flex" alignItems="center" justifyContent="center">
+              <CircularProgress color="primary" />
+            </Box>
+          </Grid>
+        ) : (
+          <Grid item xs={12} sm={12} lg={12}>
+            <Table color="#d1c4e9" tableRows={tableRows} data={data} />
+          </Grid>
+        )}
       </Grid>
       <Tooltip
         title="Add"
