@@ -1,25 +1,30 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Provider } from "react-redux";
-import store from "./redux/store";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getAllCourses } from "./redux/actions/courses";
 import routes from "./routes";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import theme from "./theme";
 
 const DashboardApp = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllCourses());
+  }, [dispatch]);
+
   return (
     <>
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Router>
-            <Switch>
-              {routes.map((route, index) => (
-                <RouteWithSubRoutes key={index} {...route} />
-              ))}
-            </Switch>
-          </Router>
-        </ThemeProvider>
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          <Switch>
+            {routes.map((route, index) => (
+              <RouteWithSubRoutes key={index} {...route} />
+            ))}
+          </Switch>
+        </Router>
+      </ThemeProvider>
     </>
   );
 };

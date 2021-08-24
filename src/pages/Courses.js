@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllCourses } from "../redux/actions/courses";
+import { useSelector } from "react-redux";
 import {
   Container,
   Typography,
@@ -19,12 +17,6 @@ import useStyles from "./style";
 const Courses = ({ openModal, handleOpenModal }) => {
   const classes = useStyles();
   const tableRows = ["Name", "Actions"];
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getAllCourses());
-  }, [dispatch]);
-
   const data = useSelector((state) => state.courses);
   const loading = useSelector((state) => state.ui.loading);
 
