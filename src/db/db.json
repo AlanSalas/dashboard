@@ -45,24 +45,11 @@
   ],
   "students": [
     {
-      "id": "1",
       "name": "Alan",
       "lastName": "Salas",
       "age": 23,
-      "lessons": [
-        "1",
-        "2"
-      ]
-    },
-    {
-      "id": "2",
-      "name": "Erick",
-      "lastName": "UI",
-      "age": 27,
-      "lessons": [
-        "2",
-        "2"
-      ]
+      "lessons": [],
+      "id": 1
     }
   ]
 }

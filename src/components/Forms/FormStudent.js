@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
+import { addStudent, updateStudent } from "../../redux/actions/students";
+import { closeModal } from "../../redux/actions/ui";
 import {
   Box,
   Button,
@@ -11,69 +14,41 @@ import { useFormik } from "formik";
 import { studentSchema } from "../../schemas";
 import useStyles from "./style";
 
-const FormCourses = () => {
+const FormStudent = ({ setSnackBar, student }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const lessons = useSelector((state) => state.lessons);
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      lastName: "",
-      age: "",
-      lessons: [],
+      name: student ? student.name : "",
+      lastName: student ? student.lastName : "",
+      age: student ? student.age : "",
+      lessons: student ? student.lessons : [],
     },
     validationSchema: studentSchema,
     onSubmit: (values) => {
-      console.log(values);
+      if (student) {
+        dispatch(updateStudent(student.id, values));
+      } else {
+        dispatch(addStudent(values));
+      }
+      dispatch(closeModal());
+      setSnackBar(true);
     },
   });
 
-  const lessons = [
-    {
-      id: "1",
-      name: "Class 1",
-      course: "Course 2",
-    },
-    {
-      id: "2",
-      name: "Class 2",
-      course: "Course 1",
-    },
-    {
-      id: "3",
-      name: "Class 3",
-      course: "Course 3",
-    },
-    {
-      id: "4",
-      name: "Class 1",
-      course: "Course 2",
-    },
-    {
-      id: "5",
-      name: "Class 2",
-      course: "Course 1",
-    },
-    {
-      id: "6",
-      name: "Class 3",
-      course: "Course 3",
-    },
-    {
-      id: "7",
-      name: "Class 1",
-      course: "Course 2",
-    },
-    {
-      id: "8",
-      name: "Class 2",
-      course: "Course 1",
-    },
-    {
-      id: "9",
-      name: "Class 3",
-      course: "Course 3",
-    },
-  ];
+  const handleChange = (e) => {
+    const { checked, name } = e.target;
+    if (checked) {
+      formik.setFieldValue("lessons", [...formik.values.lessons, name]);
+    } else {
+      formik.setFieldValue(
+        "lessons",
+        formik.values.lessons.filter((lesson) => lesson !== name)
+      );
+    }
+  };
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -125,8 +100,8 @@ const FormCourses = () => {
                     control={
                       <Checkbox
                         value={lesson.id}
-                        onChange={formik.handleChange}
-                        name="lessons"
+                        name={lesson.id.toString()}
+                        onChange={handleChange}
                       />
                     }
                     label={lesson.name}
@@ -145,4 +120,4 @@ const FormCourses = () => {
   );
 };
 
-export default FormCourses;
+export default FormStudent;
