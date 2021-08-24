@@ -1,4 +1,6 @@
 import { useDispatch } from "react-redux";
+import { deleteCourse } from "../../redux/actions/courses";
+import { deleteLesson } from "../../redux/actions/lessons";
 import {
   Paper,
   TableContainer,
@@ -10,7 +12,6 @@ import {
 } from "@material-ui/core";
 import useStyles, { StyledTableCell, StyledTableRow } from "./style";
 import { Delete, Edit, Visibility } from "@material-ui/icons";
-import { deleteCourse } from "../../redux/actions/courses";
 
 const Table = ({ tableRows, data, openModalEdit, type }) => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const Table = ({ tableRows, data, openModalEdit, type }) => {
 
   const handleDelete = (id) => {
     if (type === "courses") dispatch(deleteCourse(id));
+    if (type === "lessons") dispatch(deleteLesson(id));
   };
 
   return (

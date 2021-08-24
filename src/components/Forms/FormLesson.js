@@ -1,19 +1,30 @@
+import { useDispatch, useSelector } from "react-redux";
+import { addLesson, updateLesson } from "../../redux/actions/lessons";
+import { closeModal } from "../../redux/actions/ui";
 import { Button, Grid, MenuItem, TextField } from "@material-ui/core";
 import { useFormik } from "formik";
 import { lessonSchema } from "../../schemas";
 import useStyles from "./style";
 
-const FormCourses = () => {
+const FormCourses = ({ setSnackBar, lesson }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const courses = useSelector((state) => state.courses);
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      courseId: "",
+      name: lesson ? lesson.name : "",
+      courseId: lesson ? lesson.courseId : "",
     },
     validationSchema: lessonSchema,
     onSubmit: (values) => {
-      console.log(values);
+      if (lesson) {
+        dispatch(updateLesson(lesson.id, values));
+      } else {
+        dispatch(addLesson(values));
+      }
+      dispatch(closeModal());
+      setSnackBar(true);
     },
   });
 
@@ -44,8 +55,11 @@ const FormCourses = () => {
             helperText={formik.touched.courseId && formik.errors.courseId}
             select
           >
-            <MenuItem value="1">Course 1</MenuItem>
-            <MenuItem value="2">course 2</MenuItem>
+            {courses.map((course) => (
+              <MenuItem key={course.id} value={course.id}>
+                {course.name}
+              </MenuItem>
+            ))}
           </TextField>
         </Grid>
         <Button color="primary" variant="contained" fullWidth type="submit">

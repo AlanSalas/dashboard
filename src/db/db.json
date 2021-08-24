@@ -3,9 +3,34 @@
     {
       "name": "Course React Js",
       "id": 1
+    },
+    {
+      "name": "Course Redux",
+      "id": 2
     }
   ],
-  "lessons": [],
+  "lessons": [
+    {
+      "name": "Functional Components",
+      "courseId": 1,
+      "id": 1
+    },
+    {
+      "name": "Class Components",
+      "courseId": 1,
+      "id": 2
+    },
+    {
+      "name": "Store",
+      "courseId": 2,
+      "id": 3
+    },
+    {
+      "name": "Reducer",
+      "courseId": 2,
+      "id": 4
+    }
+  ],
   "ads": [
     {
       "id": "2",
