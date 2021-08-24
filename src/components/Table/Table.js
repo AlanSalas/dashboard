@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { deleteCourse } from "../../redux/actions/courses";
 import { deleteLesson } from "../../redux/actions/lessons";
+import { deleteAd } from "../../redux/actions/ads";
 import {
   Paper,
   TableContainer,
@@ -24,6 +25,7 @@ const Table = ({ tableRows, data, openModalEdit, type }) => {
   const handleDelete = (id) => {
     if (type === "courses") dispatch(deleteCourse(id));
     if (type === "lessons") dispatch(deleteLesson(id));
+    if (type === "ads") dispatch(deleteAd(id));
   };
 
   return (
@@ -63,7 +65,7 @@ const Table = ({ tableRows, data, openModalEdit, type }) => {
                 )}
                 {row.lesson && (
                   <StyledTableCell component="th" scope="row">
-                    {row.lesson}
+                    {row.lesson.name}
                   </StyledTableCell>
                 )}
                 {row.lastName && (

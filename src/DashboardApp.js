@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getAllCourses } from "./redux/actions/courses";
 import { getAllLessons } from "./redux/actions/lessons";
+import { getAllAds } from "./redux/actions/ads";
 import routes from "./routes";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
@@ -13,6 +14,7 @@ const DashboardApp = () => {
   useEffect(() => {
     dispatch(getAllCourses());
     dispatch(getAllLessons());
+    dispatch(getAllAds());
   }, [dispatch]);
 
   return (

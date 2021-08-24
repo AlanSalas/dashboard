@@ -33,9 +33,14 @@
   ],
   "ads": [
     {
-      "id": "2",
-      "description": "This is the ad two",
-      "lessonId": "1"
+      "description": "You need to know basic Js",
+      "lessonId": 1,
+      "id": 1
+    },
+    {
+      "description": "You need to know useContext :)",
+      "lessonId": 3,
+      "id": 2
     }
   ],
   "students": [
