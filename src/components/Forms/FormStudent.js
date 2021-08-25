@@ -13,11 +13,19 @@ import {
 import { useFormik } from "formik";
 import { studentSchema } from "../../schemas";
 import useStyles from "./style";
+import { useState } from "react";
 
 const FormStudent = ({ setSnackBar, student }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const lessons = useSelector((state) => state.lessons);
+  const [checkedState, setCheckedState] = useState(
+    student
+      ? lessons.map((lesson) => {
+          return student.lessons.includes(lesson.id.toString());
+        })
+      : new Array(lessons.length).fill(false)
+  );
 
   const formik = useFormik({
     initialValues: {
@@ -28,6 +36,7 @@ const FormStudent = ({ setSnackBar, student }) => {
     },
     validationSchema: studentSchema,
     onSubmit: (values) => {
+      console.log(values);
       if (student) {
         dispatch(updateStudent(student.id, values));
       } else {
@@ -38,16 +47,12 @@ const FormStudent = ({ setSnackBar, student }) => {
     },
   });
 
-  const handleChange = (e) => {
-    const { checked, name } = e.target;
-    if (checked) {
-      formik.setFieldValue("lessons", [...formik.values.lessons, name]);
-    } else {
-      formik.setFieldValue(
-        "lessons",
-        formik.values.lessons.filter((lesson) => lesson !== name)
-      );
-    }
+  const handleOnChange = (position) => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+
+    setCheckedState(updatedCheckedState);
   };
 
   return (
@@ -94,14 +99,16 @@ const FormStudent = ({ setSnackBar, student }) => {
           <FormLabel>Select student lessons</FormLabel>
           <Box className={classes.groupCheckbox}>
             <Grid container>
-              {lessons.map((lesson) => (
+              {lessons.map((lesson, index) => (
                 <Grid key={lesson.id} item xs={12} sm={6} lg={4}>
                   <FormControlLabel
                     control={
                       <Checkbox
+                        checked={checkedState[index]}
                         value={lesson.id}
-                        name={lesson.id.toString()}
-                        onChange={handleChange}
+                        name="lessons"
+                        onChange={formik.handleChange}
+                        onClick={(e) => handleOnChange(index, e)}
                       />
                     }
                     label={lesson.name}
