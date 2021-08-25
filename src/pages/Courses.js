@@ -7,8 +7,6 @@ import {
   Grid,
   Tooltip,
   Fab,
-  CircularProgress,
-  Box,
   Snackbar,
 } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
@@ -16,6 +14,8 @@ import Table from "../components/Table";
 import Modal from "../components/Modal";
 import FormCourse from "../components/Forms/FormCourse";
 import DetailCourse from "../components/Detail/DetailCourse";
+import Error from "../components/Error";
+import Loader from "../components/Loader";
 import useStyles from "./style";
 
 const Courses = () => {
@@ -28,6 +28,7 @@ const Courses = () => {
   const data = useSelector((state) => state.courses);
   const loading = useSelector((state) => state.ui.loading);
   const open = useSelector((state) => state.ui.openModal);
+  const error = useSelector((state) => state.ui.error);
 
   const openModalAdd = () => {
     dispatch(openModal());
@@ -47,6 +48,8 @@ const Courses = () => {
     setContentModal(<DetailCourse course={course} />);
   };
 
+  if (error) return <Error error={error} />;
+
   return (
     <Container>
       <Typography className={classes.title} variant="h5">
@@ -54,9 +57,7 @@ const Courses = () => {
       </Typography>
       {loading ? (
         <Grid item xs={12} sm={12} lg={12}>
-          <Box display="flex" alignItems="center" justifyContent="center">
-            <CircularProgress color="primary" />
-          </Box>
+          <Loader />
         </Grid>
       ) : (
         <Grid container>

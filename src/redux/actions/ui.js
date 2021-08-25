@@ -25,3 +25,17 @@ export const closeModal = () => {
     payload: false,
   };
 };
+
+export const setError = (error) => {
+  return {
+    type: "SET_ERROR",
+    payload: error,
+  };
+};
+
+export const removeError = () => {
+  return {
+    type: "REMOVE_ERROR",
+    payload: false,
+  };
+};

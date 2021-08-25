@@ -4,7 +4,12 @@ import {
   putStudent,
   removeStudent,
 } from "../../api/students";
-import { uiStartLoading, uiFinishLoading } from "../actions/ui";
+import {
+  uiStartLoading,
+  uiFinishLoading,
+  setError,
+  removeError,
+} from "../actions/ui";
 
 export const getAllStudents = () => async (dispatch) => {
   try {
@@ -12,8 +17,10 @@ export const getAllStudents = () => async (dispatch) => {
     const { data } = await getStudents();
     dispatch({ type: "GET_ALL_STUDENTS", payload: data });
     dispatch(uiFinishLoading());
+    dispatch(removeError());
   } catch (error) {
-    console.log(error);
+    dispatch(setError(error.message));
+    dispatch(uiFinishLoading());
   }
 };
 
@@ -23,8 +30,10 @@ export const addStudent = (student) => async (dispatch) => {
     const { data } = await postStudent(student);
     dispatch({ type: "ADD_STUDENT", payload: data });
     dispatch(uiFinishLoading());
+    dispatch(removeError());
   } catch (error) {
-    console.log(error);
+    dispatch(setError(error.message));
+    dispatch(uiFinishLoading());
   }
 };
 
@@ -34,8 +43,10 @@ export const updateStudent = (id, student) => async (dispatch) => {
     const { data } = await putStudent(id, student);
     dispatch({ type: "UPDATE_STUDENT", payload: data });
     dispatch(uiFinishLoading());
+    dispatch(removeError());
   } catch (error) {
-    console.log(error);
+    dispatch(setError(error.message));
+    dispatch(uiFinishLoading());
   }
 };
 
@@ -45,7 +56,9 @@ export const deleteStudent = (id) => async (dispatch) => {
     await removeStudent(id);
     dispatch({ type: "DELETE_STUDENT", payload: id });
     dispatch(uiFinishLoading());
+    dispatch(removeError());
   } catch (error) {
-    console.log(error);
+    dispatch(setError(error.message));
+    dispatch(uiFinishLoading());
   }
 };

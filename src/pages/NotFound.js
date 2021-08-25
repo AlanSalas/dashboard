@@ -1,8 +1,12 @@
+import { Container, Typography } from "@material-ui/core";
+
 const NotFound = () => {
   return (
-    <div>
-      <h1>NotFound 404 Page</h1>
-    </div>
+    <Container>
+      <Typography align="center" variant="h3">
+        Page not found error 404
+      </Typography>
+    </Container>
   );
 };
 
