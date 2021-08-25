@@ -16,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
     outline: "none",
     width: "50%",
     height: "70%",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      height: "90%",
+    },
   },
   title: {
     fontWeight: theme.typography.fontWeightMedium,

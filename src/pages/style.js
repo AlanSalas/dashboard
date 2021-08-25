@@ -3,6 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   title: {
     marginBottom: theme.spacing(4),
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: theme.spacing(1),
+    },
   },
   add: {
     backgroundColor: theme.palette.success.dark,
