@@ -17,8 +17,8 @@ const DetailCourse = ({ course }) => {
         </Typography>
         <Grid container>
           {lessonsInThisCourse.map((lesson) => (
-            <Grid item>
-              <Chip className={classes.chip__course} label={lesson.name} />
+            <Grid key={lesson.id} item>
+              <Chip className={classes.chip__lesson} label={lesson.name} />
             </Grid>
           ))}
         </Grid>

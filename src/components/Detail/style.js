@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { deepPurple, blue, teal } from "@material-ui/core/colors";
+import { purple, deepPurple, blue, teal } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   subtitle: {
@@ -15,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
   },
   chip__course: {
     backgroundColor: deepPurple[100],
+    marginRight: theme.spacing(2),
+  },
+  chip__lesson: {
+    backgroundColor: purple[100],
     marginRight: theme.spacing(2),
   },
   chip__students: {

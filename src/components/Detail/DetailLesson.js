@@ -4,17 +4,14 @@ import useStyles from "./style";
 
 const DetailLesson = ({ lesson }) => {
   const classes = useStyles();
-  const students = useSelector((state) => state.students);
   const courses = useSelector((state) => state.courses);
   const ads = useSelector((state) => state.ads);
+  const students = useSelector((state) => state.students);
   const course = courses.find((course) => course.id === lesson.courseId);
-  const studentsInThisLesson = students.filter((student) =>
-    student.lessons.filter((item) => item === lesson.id)
-  );
-
-  console.log(studentsInThisLesson);
-
   const adsInThisLesson = ads.filter((ad) => ad.lessonId === lesson.id);
+  const studentsInThisLesson = students.filter((student) =>
+    student.lessons.find((item) => item === lesson.id.toString())
+  );
 
   return (
     <Grid container spacing={2}>
