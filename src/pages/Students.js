@@ -16,6 +16,7 @@ import Table from "../components/Table";
 import Modal from "../components/Modal";
 import FormStudent from "../components/Forms/FormStudent";
 import useStyles from "./style";
+import DetailStudent from "../components/Detail/DetailStudent";
 
 const Students = () => {
   const [titleModal, setTitleModal] = useState("");
@@ -42,6 +43,12 @@ const Students = () => {
     );
   };
 
+  const openModalDetail = (student) => {
+    dispatch(openModal());
+    setTitleModal(`Detail ${student.name}`);
+    setContentModal(<DetailStudent student={student} />);
+  };
+
   return (
     <Container>
       <Typography className={classes.title} variant="h5">
@@ -61,6 +68,7 @@ const Students = () => {
               data={data}
               type="students"
               openModalEdit={openModalEdit}
+              openModalDetail={openModalDetail}
             />
           </Grid>
         )}

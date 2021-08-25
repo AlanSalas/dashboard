@@ -77,12 +77,14 @@ const Table = ({ tableRows, data, openModalEdit, openModalDetail, type }) => {
                   </StyledTableCell>
                 )}
                 <StyledTableCell align="right">
-                  <IconButton
-                    className={classes.detail}
-                    onClick={() => openModalDetail(row)}
-                  >
-                    <Visibility />
-                  </IconButton>
+                  {type !== "ads" ? (
+                    <IconButton
+                      className={classes.detail}
+                      onClick={() => openModalDetail(row)}
+                    >
+                      <Visibility />
+                    </IconButton>
+                  ) : null}
                   <IconButton
                     className={classes.edit}
                     onClick={() => openModalEdit(row)}

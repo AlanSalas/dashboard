@@ -29,6 +29,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: teal[100],
     marginRight: theme.spacing(2),
   },
+  student: {
+    marginBottom: theme.spacing(2),
+  },
+  student__avatar: {
+    marginRight: theme.spacing(2),
+  },
 }));
 
 export default useStyles;
