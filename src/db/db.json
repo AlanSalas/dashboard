@@ -1,0 +1,71 @@
+{
+  "courses": [
+    {
+      "name": "ReactJs",
+      "id": 1
+    },
+    {
+      "name": "Redux",
+      "id": 2
+    },
+    {
+      "name": "JavaScript",
+      "id": 3
+    },
+    {
+      "name": "Css",
+      "id": 4
+    },
+    {
+      "name": "HTML",
+      "id": 5
+    }
+  ],
+  "lessons": [
+    {
+      "name": "Functional Components",
+      "courseId": 1,
+      "id": 1
+    },
+    {
+      "name": "Class Components",
+      "courseId": 1,
+      "id": 2
+    },
+    {
+      "name": "Hooks",
+      "courseId": 1,
+      "id": 3
+    },
+    {
+      "name": "Functions",
+      "courseId": 3,
+      "id": 4
+    }
+  ],
+  "ads": [
+    {
+      "description": "You need to know basis of Js",
+      "lessonId": 1,
+      "id": 1
+    },
+    {
+      "description": "You need to know reserved keyword this",
+      "lessonId": 2,
+      "id": 2
+    }
+  ],
+  "students": [
+    {
+      "name": "Alan Jair",
+      "lastName": "Salas",
+      "age": 23,
+      "lessons": [
+        "1",
+        "2",
+        "3"
+      ],
+      "id": 1
+    }
+  ]
+}
