@@ -16,11 +16,17 @@ const DetailCourse = ({ course }) => {
           Lessons in this Course:
         </Typography>
         <Grid container>
-          {lessonsInThisCourse.map((lesson) => (
-            <Grid key={lesson.id} item>
-              <Chip className={classes.chip__lesson} label={lesson.name} />
-            </Grid>
-          ))}
+          {lessonsInThisCourse.length > 0 ? (
+            lessonsInThisCourse.map((lesson) => (
+              <Grid key={lesson.id} item>
+                <Chip className={classes.chip__lesson} label={lesson.name} />
+              </Grid>
+            ))
+          ) : (
+            <Typography className={classes.empty} variant="body2">
+              There is not lessons in this course yet
+            </Typography>
+          )}
         </Grid>
       </Grid>
     </Grid>
