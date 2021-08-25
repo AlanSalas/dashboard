@@ -15,6 +15,7 @@ import { Add } from "@material-ui/icons";
 import Table from "../components/Table";
 import Modal from "../components/Modal";
 import FormCourse from "../components/Forms/FormCourse";
+import DetailCourse from "../components/Detail/DetailCourse";
 import useStyles from "./style";
 
 const Courses = () => {
@@ -40,6 +41,12 @@ const Courses = () => {
     setContentModal(<FormCourse setSnackBar={setSnackBar} course={course} />);
   };
 
+  const openModalDetail = (course) => {
+    dispatch(openModal());
+    setTitleModal(`Detail ${course.name}`);
+    setContentModal(<DetailCourse course={course} />);
+  };
+
   return (
     <Container>
       <Typography className={classes.title} variant="h5">
@@ -58,6 +65,7 @@ const Courses = () => {
               tableRows={tableRows}
               data={data}
               openModalEdit={openModalEdit}
+              openModalDetail={openModalDetail}
               type="courses"
             />
           </Grid>

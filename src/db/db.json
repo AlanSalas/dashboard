@@ -29,6 +29,16 @@
       "name": "Reducer",
       "courseId": 2,
       "id": 4
+    },
+    {
+      "name": "Test 1",
+      "courseId": 1,
+      "id": 5
+    },
+    {
+      "name": "Test 2",
+      "courseId": 1,
+      "id": 6
     }
   ],
   "ads": [

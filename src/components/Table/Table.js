@@ -15,13 +15,9 @@ import {
 import useStyles, { StyledTableCell, StyledTableRow } from "./style";
 import { Delete, Edit, Visibility } from "@material-ui/icons";
 
-const Table = ({ tableRows, data, openModalEdit, type }) => {
+const Table = ({ tableRows, data, openModalEdit, openModalDetail, type }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
-
-  const handleDetail = (id) => {
-    console.log("Edit", id);
-  };
 
   const handleDelete = (id) => {
     if (type === "courses") dispatch(deleteCourse(id));
@@ -83,7 +79,7 @@ const Table = ({ tableRows, data, openModalEdit, type }) => {
                 <StyledTableCell align="right">
                   <IconButton
                     className={classes.detail}
-                    onClick={() => handleDetail(row.id)}
+                    onClick={() => openModalDetail(row)}
                   >
                     <Visibility />
                   </IconButton>
