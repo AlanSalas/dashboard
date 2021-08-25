@@ -58,8 +58,29 @@
       "name": "Alan",
       "lastName": "Salas",
       "age": 23,
-      "lessons": [],
+      "lessons": [
+        "1",
+        "2"
+      ],
       "id": 1
+    },
+    {
+      "name": "Test",
+      "lastName": "Test",
+      "age": 23,
+      "lessons": [
+        "1"
+      ],
+      "id": 2
+    },
+    {
+      "name": "Test 2",
+      "lastName": "Test 2",
+      "age": 20,
+      "lessons": [
+        "1"
+      ],
+      "id": 3
     }
   ]
 }
