@@ -52,27 +52,33 @@ const Students = () => {
   return (
     <Container>
       <Typography className={classes.title} variant="h5">
-        Lessons
+        Students
       </Typography>
-      <Grid container>
-        {loading ? (
+      {loading ? (
+        <Grid item xs={12} sm={12} lg={12}>
+          <Box display="flex" alignItems="center" justifyContent="center">
+            <CircularProgress color="primary" />
+          </Box>
+        </Grid>
+      ) : (
+        <Grid container>
           <Grid item xs={12} sm={12} lg={12}>
-            <Box display="flex" alignItems="center" justifyContent="center">
-              <CircularProgress color="primary" />
-            </Box>
+            {data.length > 0 ? (
+              <Table
+                tableRows={tableRows}
+                data={data}
+                openModalEdit={openModalEdit}
+                openModalDetail={openModalDetail}
+                type="students"
+              />
+            ) : (
+              <Typography className={classes.info} align="center">
+                There is not students registered yet
+              </Typography>
+            )}
           </Grid>
-        ) : (
-          <Grid item xs={12} sm={12} lg={12}>
-            <Table
-              tableRows={tableRows}
-              data={data}
-              type="students"
-              openModalEdit={openModalEdit}
-              openModalDetail={openModalDetail}
-            />
-          </Grid>
-        )}
-      </Grid>
+        </Grid>
+      )}
       <Tooltip
         title="Add"
         placement="top"

@@ -1,7 +1,7 @@
 import { Card, CardContent, Typography } from "@material-ui/core";
 import useStyles from "./style";
 
-const InfoCard = ({ color, title }) => {
+const InfoCard = ({ color, title, total }) => {
   const classes = useStyles({ color });
 
   return (
@@ -11,7 +11,7 @@ const InfoCard = ({ color, title }) => {
           Registered {title}
         </Typography>
         <Typography className={classes.title} variant="body2">
-          Total: 5
+          Total: {total}
         </Typography>
       </CardContent>
     </Card>

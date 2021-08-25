@@ -52,25 +52,31 @@ const Courses = () => {
       <Typography className={classes.title} variant="h5">
         Courses
       </Typography>
-      <Grid container>
-        {loading ? (
+      {loading ? (
+        <Grid item xs={12} sm={12} lg={12}>
+          <Box display="flex" alignItems="center" justifyContent="center">
+            <CircularProgress color="primary" />
+          </Box>
+        </Grid>
+      ) : (
+        <Grid container>
           <Grid item xs={12} sm={12} lg={12}>
-            <Box display="flex" alignItems="center" justifyContent="center">
-              <CircularProgress color="primary" />
-            </Box>
+            {data.length > 0 ? (
+              <Table
+                tableRows={tableRows}
+                data={data}
+                openModalEdit={openModalEdit}
+                openModalDetail={openModalDetail}
+                type="courses"
+              />
+            ) : (
+              <Typography className={classes.info} align="center">
+                There is not courses registered yet
+              </Typography>
+            )}
           </Grid>
-        ) : (
-          <Grid item xs={12} sm={12} lg={12}>
-            <Table
-              tableRows={tableRows}
-              data={data}
-              openModalEdit={openModalEdit}
-              openModalDetail={openModalDetail}
-              type="courses"
-            />
-          </Grid>
-        )}
-      </Grid>
+        </Grid>
+      )}
       <Tooltip
         title="Add"
         placement="top"

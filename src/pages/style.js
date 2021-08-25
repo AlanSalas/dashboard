@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
       right: theme.spacing(5),
     },
   },
+  info: {
+    color: theme.palette.info.main,
+  },
 }));
 
 export default useStyles;
